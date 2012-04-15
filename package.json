@@ -1,0 +1,21 @@
+{
+  "name": "mqtesting",
+  "description": "Testing MQs",
+  "private" : true,
+  "author": "",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {
+    "charm": "~0.0.6",
+    "easy-table": "~0.0.2",
+    "rabbit.js": "~0.2.0",
+    "zmq": "~2.0.3"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
