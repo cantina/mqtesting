@@ -2,7 +2,7 @@
   "name": "mqtesting",
   "description": "Testing MQs",
   "private" : true,
-  "author": "",
+  "author": "Brian Link",
   "version": "0.0.0",
   "repository": {
     "url": ""
