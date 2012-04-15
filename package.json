@@ -13,7 +13,9 @@
     "rabbit.js": "~0.2.0",
     "zmq": "~2.0.3",
     "stomp-client": "~0.2.3",
-    "dnode": "~0.9.10"
+    "dnode": "~0.9.10",
+    "redis": "~0.7.1",
+    "hiredis": "~0.1.14"
   },
   "devDependencies": {},
   "optionalDependencies": {},
