@@ -11,7 +11,8 @@
     "charm": "~0.0.6",
     "easy-table": "~0.0.2",
     "rabbit.js": "~0.2.0",
-    "zmq": "~2.0.3"
+    "zmq": "~2.0.3",
+    "stomp-client": "~0.2.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},
