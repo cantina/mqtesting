@@ -12,7 +12,8 @@
     "easy-table": "~0.0.2",
     "rabbit.js": "~0.2.0",
     "zmq": "~2.0.3",
-    "stomp-client": "~0.2.3"
+    "stomp-client": "~0.2.3",
+    "dnode": "~0.9.10"
   },
   "devDependencies": {},
   "optionalDependencies": {},
