@@ -16,7 +16,8 @@
     "stomp-client": "~0.2.3",
     "dnode": "~0.9.10",
     "redis": "~0.7.1",
-    "hiredis": "~0.1.14"
+    "hiredis": "~0.1.14",
+    "amqp": "git+https://github.com/cantina/node-amqp.git"
   },
   "devDependencies": {},
   "optionalDependencies": {},
