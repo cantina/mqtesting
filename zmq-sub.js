@@ -1,13 +1,20 @@
+var argv = require('optimist')
+  .default('host', 'localhost')
+  .alias('h', 'host')
+  .default('port', 12345)
+  .alias('p', 'port')
+  .argv;
 var zmq = require('zmq');
 var stats = require('./stats');
+var address = 'tcp://' + argv.host + ':' + argv.port;
 
 stats.clear();
-stats.setTitle('ZMQ Subscriber');
+stats.setTitle('ZMQ Subscriber on ' + address);
 
 var socket = zmq.socket('sub');
 socket.identity = 'subscriber' + process.pid;
 
-socket.connect('tcp://0.0.0.0:12345');
+socket.connect(address);
 socket.subscribe('TIME');
 
 socket.on('message', function(data) {
