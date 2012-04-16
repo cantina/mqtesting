@@ -15,11 +15,17 @@ var socket = zmq.socket('pub');
 socket.identity = 'publisher' + process.pid;
 
 socket.bind(address, function(err) {
-  var doit = function() {
-    var time = new Date().getTime();
-    socket.send('TIME ' + time);
-    stats.updateCounts();
-    process.nextTick(doit);
+  if (err) {
+    console.error(err);
+    process.exit(1);
   }
-  doit();
 });
+
+var doit = function() {
+  var time = new Date().getTime();
+  socket.send('TIME ' + time);
+  stats.updateCounts();
+  process.nextTick(doit);
+}
+
+setTimeout(doit, 1000);
