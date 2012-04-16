@@ -8,6 +8,7 @@
     "url": ""
   },
   "dependencies": {
+    "optimist": "~0.3.1",
     "charm": "~0.0.6",
     "easy-table": "~0.0.2",
     "rabbit.js": "~0.2.0",

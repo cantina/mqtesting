@@ -1,4 +1,8 @@
-var context = require('rabbit.js').createContext();
+var argv = require('optimist')
+  .default('host', 'localhost')
+  .alias('h', 'host')
+  .argv;
+var context = require('rabbit.js').createContext('amqp://' + argv.host);
 var stats = require('./stats');
 
 stats.clear();
