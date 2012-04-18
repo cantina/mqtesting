@@ -1,0 +1,14 @@
+{
+  "author": "",
+  "name": "rabbitmq",
+  "version": "0.0.0",
+  "dependencies": {
+    "optimist": "*",
+    "cantina-core": "git+ssh://git@github.com:cantina/cantina-core.git"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
