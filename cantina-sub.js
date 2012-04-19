@@ -2,7 +2,7 @@ var argv = require('optimist')
   .default('host', 'localhost')
   .alias('h', 'host')
   .argv;
-var cantina = require('cantina-core');
+var cantina = require('cantina-service');
 var service = new cantina.Service({url: 'amqp://' + argv.host});
 var stats = require('./stats');
 

@@ -3,7 +3,7 @@ var argv = require('optimist')
   .default('amqp', 'localhost')
   .argv;
 
-var cantina = require('cantina-core');
+var cantina = require('cantina-service');
 var service = new cantina.Service({url: 'amqp://' + argv.amqp});
 
 var body = JSON.stringify({hello: 'world', pid: process.pid});

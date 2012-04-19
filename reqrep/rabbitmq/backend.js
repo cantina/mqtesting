@@ -1,4 +1,4 @@
-var cantina = require('cantina-core');
+var cantina = require('cantina-service');
 var service = new cantina.Service();
 
 var body = JSON.stringify({hello: 'world', pid: process.pid});

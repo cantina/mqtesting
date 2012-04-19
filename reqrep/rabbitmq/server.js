@@ -4,7 +4,7 @@ var argv = require('optimist')
   .argv;
 var http = require('http');
 
-var cantina = require('cantina-core');
+var cantina = require('cantina-service');
 var service = new cantina.Service();
 
 var server = http.createServer(function(req, res) {
