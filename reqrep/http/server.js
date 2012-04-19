@@ -26,7 +26,7 @@ service.subscribe('server:started', function(url) {
   console.log("server at " + url + " started.");
 });
 
-argv.port = parseint(argv.url.split(':')[1]);
+argv.port = parseInt(argv.url.split(':')[1]);
 
 bouncy(function(req, bounce) {
   var target = backends.shift();
