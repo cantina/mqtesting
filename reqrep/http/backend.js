@@ -1,10 +1,10 @@
 var argv = require('optimist')
-  .default('port', '8000')
-  .alias('p', 'port')
+  .default('url', 'localhost:8000')
+  .default('amqp', 'localhost')
   .argv;
 
 var cantina = require('cantina-core');
-var service = new cantina.Service();
+var service = new cantina.Service({url: 'amqp://' + argv.amqp});
 
 var body = JSON.stringify({hello: 'world', pid: process.pid});
 var headers = {
@@ -18,17 +18,19 @@ var server = require('http').createServer(function (req, res) {
   // console.log('Request ok.');
 });
 
+var argv.port = parseint(argv.url.split(':')[1]);
+
 server.listen(argv.port);
 console.log('listening on port ' + argv.port);
 // Broadcast our port right away
-service.publish('backend:started', argv.port);
+service.publish('backend:started', argv.url);
 // Broadcast our port when a server starts
-service.subscribe('server:started', function(port) {
-  service.publish('backend:discover:' + port, argv.port);
+service.subscribe('server:started', function(url) {
+  service.publish('backend:discover:' + url, argv.url);
 });
 // Broadcast that our port is now closed.
 process.on('SIGINT', function () {
-  service.publish('backend:ended', argv.port);
+  service.publish('backend:ended', argv.url);
   setTimeout(process.exit, 50);
 });
 

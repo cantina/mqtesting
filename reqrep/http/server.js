@@ -1,30 +1,32 @@
 var argv = require('optimist')
-  .default('port', '8080')
-  .alias('p', 'port')
+  .default('url', 'localhost:8080')
+  .default('amqp', 'localhost')
   .argv;
 
 var cantina = require('cantina-core');
-var service = new cantina.Service();
+var service = new cantina.Service({url: 'amqp://' + argv.amqp});
 var bouncy = require('bouncy');
 
 var backends = [];
 
-service.subscribe('backend:started', function(port) {
-  backends.push(port);
-  console.log("backend at " + port + " started.");
+service.subscribe('backend:started', function(url) {
+  backends.push(url);
+  console.log("backend at " + url + " started.");
 });
-service.subscribe('backend:ended', function(port) {
+service.subscribe('backend:ended', function(url) {
   for (var i in backends) {
-    if (backends[i] === port) {
+    if (backends[i] === url) {
       backends.splice(i, 1);
       break;
     }
   }
-  console.log("backend at " + port + " ended.");
+  console.log("backend at " + url + " ended.");
 });
-service.subscribe('server:started', function(port) {
-  console.log("server at " + port + " started.");
+service.subscribe('server:started', function(url) {
+  console.log("server at " + url + " started.");
 });
+
+argv.port = parseint(argv.url.split(':')[1]);
 
 bouncy(function(req, bounce) {
   var target = backends.shift();
@@ -32,11 +34,11 @@ bouncy(function(req, bounce) {
   bounce(target);
 }).listen(argv.port);
 
-service.subscribe('backend:discover:' + argv.port, function(port) {
-  backends.push(port);
-  console.log("backend at " + port + " discovered!");
+service.subscribe('backend:discover:' + argv.url, function(url) {
+  backends.push(url);
+  console.log("backend at " + url + " discovered!");
 });
 
 setTimeout(function() {
-  service.publish('server:started', argv.port);
+  service.publish('server:started', argv.url);
 }, 50);
