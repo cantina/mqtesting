@@ -18,7 +18,7 @@ var server = require('http').createServer(function (req, res) {
   // console.log('Request ok.');
 });
 
-var argv.port = parseint(argv.url.split(':')[1]);
+argv.port = parseint(argv.url.split(':')[1]);
 
 server.listen(argv.port);
 console.log('listening on port ' + argv.port);
