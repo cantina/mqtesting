@@ -18,7 +18,8 @@
     "redis": "~0.7.1",
     "hiredis": "~0.1.14",
     "amqp": "git+ssh://git@github.com:cantina/node-amqp.git",
-    "cantina-service": "git+ssh://git@github.com:cantina/cantina-service.git"
+    "cantina-service": "git+ssh://git@github.com:cantina/cantina-service.git",
+    "hook.io": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
